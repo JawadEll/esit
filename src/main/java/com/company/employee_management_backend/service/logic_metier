@@ -1,0 +1,23 @@
+                      $Sert a quoi ?
+
+Elle fait le lien entre :
+
+Controller (API REST, qui reçoit les requêtes HTTP)
+
+Repository (qui interagit avec la base de donnée
+
+                      $Pourquoi est nessaire ?
+¤sans cette couche pas de laison entre dao et conttrolleur {logique metier c'est l'intermediare entre les deux
+¤éviter code spaghity (code non maintenable) c-à-dire ne pas ecrire le code metier en dao ou controller
+
+
+                     $Sont objectif?
+
+c'est d'applique les bons pratique c_à-dire cette couche est isoler du(controller et dao)
+pour objectif de traiter
+les calcules , operation nessaire métier , validation , regles
+faciliter la maintenance et les test unitaire
+
+ainsi que un service peut etre utiliser vers différente controller {Réutilisable}
+
+                $$$$$$$$Pourquoi une interface pour la couche Service ?$$$$$$$$

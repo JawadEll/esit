@@ -1,0 +1,31 @@
+¤¤¤etap2 apres les entity pourquoi ?
+sans cette couche (dao) couche logique métier service va pas interagire avec les classes
+###chéma de devleppement  Entity → Repository → Service → Controller
+
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤Pour partie realisation de cette couche :==>
+                                                                      c'est le polymorphisme des interfaces génériques. pattern genirique
+*Si ton projet est petit ou moyen,
+{approche classique} (Repositories séparés) → simple et clair.
+
+
+                                        -------------------------------------------
+  nommé ==>usage Interface générique
+
+*Si ton projet est gros (20+ entités) ou
+ tu veux des méthodes communes globales,
+  {approche générique }→ meilleure maintenabilité.
+
+public interface GenericRepository<T,ID> extends JpaRepository<T,ID>{
+
+    /*de plus +  ici je peux ajouter des methode personnaliser pour toute les sous interface */
+
+}
+Plus propre pour gros projets avec beaucoup d’entités.
+
+
+  diff :
+  Pattern Repository : Concept de DDD (Domain-Driven Design) qui sépare la logique métier de la persistance.
+
+  Generic : On rend le code réutilisable avec des types paramétrés (<T, ID>).
