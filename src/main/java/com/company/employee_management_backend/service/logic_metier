@@ -21,3 +21,7 @@ faciliter la maintenance et les test unitaire
 ainsi que un service peut etre utiliser vers différente controller {Réutilisable}
 
                 $$$$$$$$Pourquoi une interface pour la couche Service ?$$$$$$$$
+ ¤meilleur maintenabiliter pour application
+ ¤respecter princip solide en POO et OCP ouvert à l'extention et fermer à la modification
+
+
