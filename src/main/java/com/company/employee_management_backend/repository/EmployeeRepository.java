@@ -7,4 +7,7 @@ public interface EmployeeRepository extends GenericRepository<Employee, Long> {
 /*pour toute crud sont déja hérité par GeniriqueRepository et aussi on peut ajouter des methode personnalisé */
 
 
+
+
+
 }

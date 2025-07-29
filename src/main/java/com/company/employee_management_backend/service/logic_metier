@@ -24,4 +24,64 @@ ainsi que un service peut etre utiliser vers différente controller {Réutilisab
  ¤meilleur maintenabiliter pour application
  ¤respecter princip solide en POO et OCP ouvert à l'extention et fermer à la modification
 
+------------------------------------------------------------------------------injection de dépendancy------------------------------------------------------------------------------
+package com.company.employee_management_backend.service.impl;
 
+import com.company.employee_management_backend.entity.User;
+import com.company.employee_management_backend.repository.UserRepository;
+import com.company.employee_management_backend.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+/*@Service :
+
+Est une annotation stéréotype (comme @Controller et @Repository).
+
+Elle marque une classe comme composant métier (Business Logic Layer).
+
+Elle permet à Spring de détecter et instancier cette classe automatiquement via le mécanisme IoC (Inversion of Control) et DI (Dependency Injection)*/
+public abstract  class UserServiceImpl implements UserService {
+    /*injection de dependance = c'est le faite de crerer {objet } ce que tu as besoin
+      ici ➡ C’est Spring qui crée l’objet à ta place et te le donne
+
+    Règle du Spring Boot  :       ✔ Controller →(à besion)→ {Service} ->(à besion)→  Repository
+                               UserController a besoin de ====>  UserService
+                              UserService    a besoin de ====> UserRepositor
+
+
+                      aussi =====>   Principe :
+                        Repository : fournit les opérations CRUD basiques et éventuellement des requêtes spécifiques (findByUsername, existsByEmail, etc.).
+
+                        Service : utilise ces méthodes du Repository pour appliquer la logique métier, comme :
+
+                        Vérifier si un user existe avant de l’ajouter.
+
+                        Encoder le mot de passe avant save().
+
+                        Empêcher la suppression d’un Admin principal.
+
+                        Assigner un employé à un manager.
+
+                        Gérer les exceptions propres (ResourceNotFound, etc.).
+     */
+
+  private final   UserRepository userRepository; /*injection dependancy*/
+
+    //@Autowired  si je met cette annotation c-à-dire que Si on a un seul constructeur → Pas besoin de @Autowired (Spring le détecte).
+    //
+    //Si plusieurs constructeurs → Mets @Autowired sur celui à utiliser.
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository; //inject ici
+    }
+
+    // implementation des methodes userRepository et appliquer les regles
+    @Override
+    public User createUser(User user) {
+ ............................ect
+    }............................ect
+}
+
+
+
+a faire =====>user.setPassword(passwordEncoder.encode(user.getPassword()));  sécuriterConfigue???
